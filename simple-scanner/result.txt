@@ -1,0 +1,24 @@
+
+ $  time go run simple-sccanner.go
+22 : port already opend!!!
+
+25 : port already opend!!!
+
+53 : port already opend!!!
+
+139 : port already opend!!!
+
+443 : port already opend!!!
+
+445 : port already opend!!!
+
+465 : port already opend!!!
+
+993 : port already opend!!!
+
+995 : port already opend!!!
+
+10050 : port already opend!!!
+
+go run simple-sccanner.go  21.39s user 40.56s system 0% cpu 1:49:22.65 total
+
