@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net"
+	"runtime"
 	"strconv"
 	"sync"
 	"time"
@@ -29,7 +30,7 @@ func Scan(PortNum int, wg *sync.WaitGroup) {
 	if err != nil {
 
 	} else {
-		fmt.Printf("%d  Port Opened\n", PortNum)
+		fmt.Printf("!!!  %d  Port Opened !!!\n", PortNum)
 	}
 	wg.Done()
 }
@@ -42,21 +43,13 @@ func main() {
 		//fmt.Printf("Goroutine : %d\n", runtime.NumGoroutine())
 		//fmt.Println(PortNum)
 		/*if PortNum == 49151 {
-			fmt.Println("last port started")
-	}*/
+				fmt.Println("last port started")
+		}*/
 
-		if PortNum%3 == 0 {
 			wg.Add(1)
 			go Scan(PortNum, wg)
-		} else if PortNum%3 == 1 {
-			wg.Add(1)
-			go Scan(PortNum, wg)
-		} else if PortNum%3 == 2 {
-			wg.Add(1)
-			go Scan(PortNum, wg)
-		} else {
-			fmt.Println("error")
-		}
+
+		fmt.Printf("NumGoroutine : %d\n", runtime.NumGoroutine())
 	}
 	wg.Wait()
 	fmt.Println("finish")

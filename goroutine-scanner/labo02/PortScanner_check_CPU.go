@@ -11,7 +11,7 @@ import (
 
 var PortNum int
 var MaxNum int = 65536
-var Dist string = "133.13.50.10"
+var Dist string = "localhost"
 var DetectPort string
 
 func DebugScan(PortNum int) {
@@ -29,10 +29,10 @@ func Scan(PortNum int, semapho chan int, wg *sync.WaitGroup) {
 	_, err := net.DialTimeout("tcp", Dist+":"+strconv.Itoa(PortNum), (1500000000 * time.Nanosecond))
 
 	if err != nil {
-			fmt.Printf(" Checking %d Port\n",PortNum)
-			if PortNum%100 ==0{
-					fmt.Printf("Goroutine num is       %d\n",runtime.NumGoroutine())
-			}
+		/*fmt.Printf(" Checking %d Port\n",PortNum)
+		if PortNum%100 ==0{
+				fmt.Printf("Goroutine num is       %d\n",runtime.NumGoroutine())
+		}*/
 
 	} else {
 		fmt.Printf("%d  Port Opened\n", PortNum)
@@ -55,7 +55,7 @@ func main() {
 	for PortNum = 1; PortNum <= MaxNum; PortNum++ {
 		//fmt.Printf("Goroutine : %d\n", runtime.NumGoroutine())
 		//fmt.Println(PortNum)
-		/*if PortNum == 49151 {
+		/*if PortNum == Maxnum {
 				fmt.Println("last port started")
 		}*/
 
