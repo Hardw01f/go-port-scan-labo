@@ -45,6 +45,7 @@ func Scan(PortNum int, semapho chan int, wg *sync.WaitGroup) {
 
 func main() {
 
+	for{
 	wg := new(sync.WaitGroup)
 	cpus := runtime.NumCPU()
 	fmt.Printf("runtime.CPUS : %d\n", cpus)
@@ -65,4 +66,6 @@ func main() {
 	wg.Wait()
 	fmt.Println("finish")
 	//DebugScan(5060)
+	time.Sleep(600 * time.Second)
+	}
 }
