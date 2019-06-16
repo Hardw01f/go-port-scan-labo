@@ -15,7 +15,7 @@ var Dist string = "localhost"
 var DetectPort string
 
 func DebugScan(PortNum int) {
-	_, err := net.DialTimeout("tcp", Dist+":"+strconv.Itoa(PortNum), (1500000000 * time.Nanosecond))
+	_, err := net.DialTimeout("tcp", Dist+":"+strconv.Itoa(PortNum), (500 * time.Millisecond))
 
 	if err != nil {
 		fmt.Printf("%d port is closed\n", PortNum)
@@ -26,7 +26,7 @@ func DebugScan(PortNum int) {
 
 func Scan(PortNum int, semapho chan int, wg *sync.WaitGroup) {
 	semapho <- 1
-	_, err := net.DialTimeout("tcp", Dist+":"+strconv.Itoa(PortNum), (1500000000 * time.Nanosecond))
+	_, err := net.DialTimeout("tcp", Dist+":"+strconv.Itoa(PortNum), (500 * time.Millisecond))
 
 	if err != nil {
 		/*fmt.Printf(" Checking %d Port\n",PortNum)
