@@ -26,7 +26,7 @@ func DebugScan(PortNum int) {
 
 func Scan(PortNum int, semapho chan int, wg *sync.WaitGroup) {
 	semapho <- 1
-	_, err := net.DialTimeout("tcp", Dist+":"+strconv.Itoa(PortNum), (500 * time.Millisecond))
+	_, err := net.DialTimeout("tcp", Dist+":"+strconv.Itoa(PortNum), (1500 * time.Millisecond))
 
 	if err != nil {
 		/*fmt.Printf(" Checking %d Port\n",PortNum)
