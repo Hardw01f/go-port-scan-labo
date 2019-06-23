@@ -74,10 +74,6 @@ func main() {
 	wg.Wait()
 	fmt.Println("finish")
 	//DebugScan(5060)
-	if semaphoMultiple == 150 {
-			time.Sleep(420 * time.Second)
-	}else {
-			time.Sleep(180 * time.Second)
-	}
+	time.Sleep(180 * time.Second)
 	}
 }
