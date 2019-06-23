@@ -50,7 +50,15 @@ func main() {
 	fmt.Printf("runtime.CPUS : %d\n", cpus)
 	runtime.GOMAXPROCS(cpus)
 
-	semapho := make(chan int, cpus*300)
+	var semaphoMultiple int
+	if cpus == 2 {
+			semaphoMultiple = 150
+	}else {
+			semaphoMultiple = 300
+	}
+	fmt.Printf("semaphoMultiple : %d\n",semaphoMultiple)
+
+	semapho := make(chan int, cpus*semaphoMultiple)
 
 	for {
 	for PortNum = 1; PortNum <= MaxNum; PortNum++ {
@@ -66,6 +74,6 @@ func main() {
 	wg.Wait()
 	fmt.Println("finish")
 	//DebugScan(5060)
-	time.Sleep(600 * time.Second)
+	time.Sleep(180 * time.Second)
 	}
 }
