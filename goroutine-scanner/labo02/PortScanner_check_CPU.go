@@ -45,7 +45,6 @@ func Scan(PortNum int, semapho chan int, wg *sync.WaitGroup) {
 
 func main() {
 
-	for{
 	wg := new(sync.WaitGroup)
 	cpus := runtime.NumCPU()
 	fmt.Printf("runtime.CPUS : %d\n", cpus)
@@ -53,6 +52,7 @@ func main() {
 
 	semapho := make(chan int, cpus*300)
 
+	for {
 	for PortNum = 1; PortNum <= MaxNum; PortNum++ {
 		//fmt.Printf("Goroutine : %d\n", runtime.NumGoroutine())
 		//fmt.Println(PortNum)
